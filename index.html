@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #0077cc;
+            font-size: 1.2em;
+            border-bottom: 2px solid #0077cc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .example {
+            margin-bottom: 20px;
+        }
+        input[type="number"], input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #0077cc;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        p, pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+            margin-top: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Examples</h1>
+
+        <!-- Example 1: Age Validator -->
+        <div class="example">
+            <h2>Example 1: Age Validator</h2>
+            <input type="number" id="age" placeholder="Enter your age">
+            <button onclick="checkAge()">Check Eligibility</button>
+            <p id="ageResult"></p>
+        </div>
+
+        <!-- Example 2: Sum of Numbers Using a Loop -->
+        <div class="example">
+            <h2>Example 2: Sum of Numbers Using a Loop</h2>
+            <input type="number" id="sumLimit" placeholder="Enter a number">
+            <button onclick="calculateSum()">Calculate Sum</button>
+            <p id="sumResult"></p>
+        </div>
+
+        <!-- Example 3: Even or Odd Checker Using Functions -->
+        <div class="example">
+            <h2>Example 3: Even or Odd Checker</h2>
+            <input type="number" id="checkNumber" placeholder="Enter a number">
+            <button onclick="checkEvenOdd()">Check Even or Odd</button>
+            <p id="evenOddResult"></p>
+        </div>
+
+        <!-- Example 4: Multiplication Table Generator -->
+        <div class="example">
+            <h2>Example 4: Multiplication Table Generator</h2>
+            <input type="number" id="tableNumber" placeholder="Enter a number">
+            <input type="number" id="tableRange" placeholder="Enter range (e.g., 10)">
+            <button onclick="generateTable()">Generate Table</button>
+            <pre id="tableResult"></pre>
+        </div>
+
+        <!-- Example 5: Simple Calculator -->
+        <div class="example">
+            <h2>Example 5: Simple Calculator</h2>
+            <input type="number" id="calcNum1" placeholder="Enter first number">
+            <input type="number" id="calcNum2" placeholder="Enter second number">
+            <input type="text" id="calcOperation" placeholder="Enter operation (+, -, *, /)">
+            <button onclick="calculate()">Calculate</button>
+            <p id="calcResult"></p>
+        </div>
+    </div>
+
+    <script>
+        // Example 1: Age Validator
+        function checkAge() {
+            const age = parseInt(document.getElementById("age").value);
+            const result = age >= 18 ? "You are eligible to vote." : "You are not eligible to vote.";
+            document.getElementById("ageResult").textContent = result;
+        }
+
+        // Example 2: Sum of Numbers Using a Loop
+        function calculateSum() {
+            const n = parseInt(document.getElementById("sumLimit").value);
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+            }
+            document.getElementById("sumResult").textContent = `The sum is ${sum}.`;
+        }
+
+        // Example 3: Even or Odd Checker
+        function checkEvenOdd() {
+            const number = parseInt(document.getElementById("checkNumber").value);
+            const result = number % 2 === 0 ? `${number} is even.` : `${number} is odd.`;
+            document.getElementById("evenOddResult").textContent = result;
+        }
+
+        // Example 4: Multiplication Table Generator
+        function generateTable() {
+            const number = parseInt(document.getElementById("tableNumber").value);
+            const range = parseInt(document.getElementById("tableRange").value);
+            let table = "";
+            for (let i = 1; i <= range; i++) {
+                table += `${number} x ${i} = ${number * i}\n`;
+            }
+            document.getElementById("tableResult").textContent = table;
+        }
+
+        // Example 5: Simple Calculator
+        function calculate() {
+            const num1 = parseFloat(document.getElementById("calcNum1").value);
+            const num2 = parseFloat(document.getElementById("calcNum2").value);
+            const operation = document.getElementById("calcOperation").value;
+            let result;
+
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = "Invalid operation.";
+            }
+            document.getElementById("calcResult").textContent = `The result is: ${result}`;
+        }
+    </script>
+</body>
+</html>
